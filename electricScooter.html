@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Scooters</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .navbar-nav .nav-link {
+            font-family: 'Open Sans', sans-serif !important;
+            font-weight: 450 !important;
+            font-size: 19px !important;
+            line-height: 34px !important;
+            color: rgb(0, 0, 0) !important;
+        }
+        .navbar-nav .nav-link.active,
+        .navbar-nav .nav-link:hover {
+            color: rgb(201, 59, 74) !important;
+        }
+
+    
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        main { 
+            flex: 1; 
+            margin-top: 60px;
+        }
+
+        /* PRODUCT IMAGE WRAPPER */
+        .product-image-wrapper {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image-wrapper img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            object-position: center;
+            background: white;
+            transition: transform 0.3s;
+        }
+
+        .product-image-wrapper:hover img {
+            transform: scale(1.05);
+        }
+
+        /* PRODUCT ACTIONS */
+        .product-actions {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .product-image-wrapper:hover .product-actions {
+            opacity: 1;
+        }
+
+        .product-actions .btn {
+            width: 45px;
+            height: 45px;
+            padding: 0;
+            font-size: 1.2rem;
+            background-color: #fff;
+            border: none;
+            color: black;
+        }
+
+        /* STAR RATING & CARD TITLE */
+        .star-rating {
+            color: #ccc;
+            font-size: 1.3rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .card-price {
+            font-weight: 400;
+            color: #666;
+        }
+
+        .card-body {
+            padding: 1rem 0.5rem;
+        }
+
+        /* SIZE BUTTONS */
+        .card-body .btn {
+            margin: 2px;
+        }
+
+        /* .site-footer .footer-links {
+            margin-top: 50rem;
+        } */
+        
+        /* RESPONSIVE STYLES */
+        @media (max-width: 1199.98px) {
+            .navbar-nav {
+                margin-left: 0 !important;
+            }
+            .form-select {
+                margin-right: 100px !important;
+            }
+            .row {
+                margin-left: 100px !important;
+                margin-right: 100px !important;
+            }
+            .breadcrumb {
+                margin-left: 100px !important;
+            }
+        }
+        
+        @media (max-width: 991.98px) {
+            .navbar {
+                margin-left: 0 !important;
+                padding: 0.5rem 1rem;
+            }
+            .form-select {
+                margin-right: 50px !important;
+            }
+            .row {
+                margin-left: 50px !important;
+                margin-right: 50px !important;
+            }
+            .breadcrumb {
+                margin-left: 50px !important;
+            }
+            .navbar-brand img {
+                height: 45px !important;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .navbar {
+                margin-left: 0 !important;
+                padding: 0.5rem 0.75rem;
+            }
+            .form-select {
+                margin-right: 20px !important;
+            }
+            .row {
+                margin-left: 20px !important;
+                margin-right: 20px !important;
+            }
+            .breadcrumb {
+                margin-left: 20px !important;
+            }
+            .d-flex.flex-column.flex-md-row {
+                align-items: stretch !important;
+            }
+            .d-flex.align-items-center.gap-3 {
+                justify-content: center;
+                margin-right: 0 !important;
+            }
+            .navbar-brand img {
+                height: 40px !important;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .navbar {
+                margin-left: 0 !important;
+                padding: 0.5rem;
+            }
+            .form-select {
+                margin-right: 0 !important;
+                width: 100% !important;
+            }
+            .row {
+                margin-left: 10px !important;
+                margin-right: 10px !important;
+            }
+            .breadcrumb {
+                margin-left: 10px !important;
+            }
+            .d-flex.align-items-center.gap-3 {
+                flex-direction: column;
+                gap: 10px !important;
+            }
+            .navbar-brand img {
+                height: 35px !important;
+            }
+            .fas.fa-user {
+                margin-right: 10px !important;
+            }
+            .product-image-wrapper img {
+                max-height: 250px;
+            }
+            .product-actions {
+                opacity: 1;
+            }
+            .product-actions .btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            .card-title {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .product-image-wrapper img {
+                max-height: 300px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white py-3" style="margin-left: 40px;margin-right: 10px;">
+  <div class="container-fluid">
+    <!-- Mobile hamburger (left) -->
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <!-- Mobile brand (center) -->
+    <a class="navbar-brand d-lg-none mx-auto" href="index.html">
+      <img src="photo/imgi_1_logo-regular.png" alt="Electric Scooters" style="height: 50px;">
+    </a>
+    
+    <!-- Mobile cart (right) -->
+    <div class="d-lg-none" style="padding-right: 15px;">
+      <div class="cart-logo position-relative" style="cursor: pointer;">
+        <i class="fas fa-shopping-cart fs-5 text-danger"></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+      </div>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="d-lg-flex w-100 align-items-center">
+        <!-- Left Navigation -->
+        <div class="navbar-nav d-flex flex-lg-row flex-column me-lg-auto gap-3" style="font-family: 'Open Sans', sans-serif; font-weight: 500; font-size: 16px; line-height: 24px; color: rgb(33, 37, 41);">
+          <a class="nav-link text-dark" href="shop.html">Shop All</a>
+          <a class="nav-link active" href="electricScooter.html">Electric Scooters</a>
+          <a class="nav-link text-dark" href="accessories.html">Accessories</a>
+          <a class="nav-link text-dark" href="about.html">About</a>
+          <a class="nav-link text-dark" href="contact.html">Contact</a>
+        </div>
+
+        <!-- Desktop Logo (center) -->
+        <div class="mx-auto d-none d-lg-block">
+          <a href="index.html">
+            <img src="photo/imgi_1_logo-regular.png" alt="Electric Scooters" style="margin-right: 30px;height: 70px;">
+          </a>
+        </div>
+
+       <!-- Desktop Right Section -->
+<div class="d-none d-lg-flex align-items-center ms-lg-auto gap-3">
+    <!-- Search Bar -->
+    <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search products..." style="min-width: 220px; padding: 8px 12px;">
+        <button class="btn btn-danger" type="submit" style="padding: 8px 12px;">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+
+    <!-- Cart Icon -->
+    <div class="cart-logo position-relative ms-3" style="cursor: pointer;">
+        <i class="fas fa-shopping-cart fs-5 text-danger"></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+    </div>
+
+    <!-- User Icon -->
+    <i class="fas fa-user fs-5 text-dark ms-3" style="margin-right: 40px;"></i>
+</div>
+
+        <!-- Mobile Search & User (in collapsed menu) -->
+        <div class="d-lg-none mt-3">
+          <form class="d-flex mb-3" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search products..." style="padding: 8px 12px;">
+            <button class="btn btn-danger" type="submit" style="padding: 8px 12px;">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+          <div class="text-center">
+            <i class="fas fa-user fs-5 text-dark"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>
+    <main>
+        <div class="container-fluid py-5">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+                <nav aria-label="breadcrumb" class="mb-3 mb-md-0">
+                    <ol class="breadcrumb mb-0" style="margin-left: 161px;">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Electric Scooters</li>
+                    </ol>
+                </nav>
+                <div class="d-flex align-items-center gap-3" style="margin-right: -2px;">
+                    <select class="form-select" id="sortSelect" style="width: auto; margin-right: 170px;">
+                        <option value="default">Default sorting</option>
+                        <option value="name-asc">Sort by name (A-Z)</option>
+                        <option value="name-desc">Sort by name (Z-A)</option>
+                        <option value="price-asc">Sort by price (Low to High)</option>
+                        <option value="price-desc">Sort by price (High to Low)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" style="margin-top: 30px;margin-left: 150px;margin-right: 150px;">
+                
+                <div class="col">
+                    <div class="card h-100 d-flex flex-column border-0 product-card" data-product="booster-brave-f1" style="cursor: pointer;">
+                        <div class="product-image-wrapper bg-light flex-shrink-0">
+                            <img src="electric/scooty1.jpg" alt="Booster Brave F1">
+                            <div class="product-actions">
+                                <button class="btn"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body flex-grow-1 text-start">
+                            <div class="star-rating mb-2">☆☆☆☆☆</div>
+                            <h5 class="card-title mb-2">Booster Brave F1</h5>
+                            <p class="card-price mb-3">$490.00</p>
+                            <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                <button class="btn btn-sm btn-outline-secondary">LG</button>
+                                <button class="btn btn-sm btn-outline-secondary">MD</button>
+                                <button class="btn btn-sm btn-outline-secondary">SM</button>
+                                <button class="btn btn-sm btn-outline-secondary">XL</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 border-0 product-card" data-product="libero-x150" style="cursor: pointer;">
+                        <div class="product-image-wrapper bg-light">
+                            <img src="electric/scooty2.jpg" alt="Libero X150">
+                            <div class="product-actions">
+                                <button class="btn"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body pt-2 text-start">
+                            <div class="star-rating mb-2">☆☆☆☆☆</div>
+                            <h5 class="card-title mb-2">Libero X150</h5>
+                            <p class="card-price mb-3">$750.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 border-0 product-card" data-product="urban-glide-g2" style="cursor: pointer;">
+                        <div class="product-image-wrapper bg-light">
+                            <img src="electric/scooty4.jpg" alt="Urban Glide G2">
+                            <div class="product-actions">
+                                <button class="btn"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body pt-2 text-start">
+                            <div class="star-rating mb-2">☆☆☆☆☆</div>
+                            <h5 class="card-title mb-2">Urban Glide G2</h5>
+                            <p class="card-price mb-3">$520.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 border-0 product-card" data-product="city-sprinter-pro" style="cursor: pointer;">
+                        <div class="product-image-wrapper bg-light">
+                            <img src="electric/scooty5.jpg" alt="City Sprinter Pro">
+                            <div class="product-actions">
+                                <button class="btn"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body pt-2 text-start">
+                            <div class="star-rating mb-2">☆☆☆☆☆</div>
+                            <h5 class="card-title mb-2">City Sprinter Pro</h5>
+                            <p class="card-price mb-3">$680.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 border-0 product-card" data-product="eco-rider-z1" style="cursor: pointer;">
+                        <div class="product-image-wrapper bg-light">
+                            <img src="electric/scooty6.jpg" alt="Eco Rider Z1">
+                            <div class="product-actions">
+                                <button class="btn"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body pt-2 text-start">
+                            <div class="star-rating mb-2">☆☆☆☆☆</div>
+                            <h5 class="card-title mb-2">Eco Rider Z1</h5>
+                            <p class="card-price mb-3">$430.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 border-0 product-card" data-product="volt-runner" style="cursor: pointer;">
+                        <div class="product-image-wrapper bg-light">
+                            <img src="electric/scooty7.jpg" alt="Volt Runner">
+                            <div class="product-actions">
+                                <button class="btn"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body pt-2 text-start">
+                            <div class="star-rating mb-2">☆☆☆☆☆</div>
+                            <h5 class="card-title mb-2">Volt Runner</h5>
+                            <p class="card-price mb-3">$599.00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card h-100 border-0 product-card" data-product="practico-s2" style="cursor: pointer;">
+                        <div class="product-image-wrapper bg-light">
+                            <img src="electric/scooty8.jpg" alt="Practico S2">
+                            <div class="product-actions">
+                                <button class="btn"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body pt-2 text-start">
+                            <div class="star-rating mb-2">☆☆☆☆☆</div>
+                            <h5 class="card-title mb-2">Practico S2</h5>
+                            <p class="card-price mb-3">$615.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 border-0 product-card" data-product="libero-x350" style="cursor: pointer;">
+                        <div class="product-image-wrapper bg-light">
+                            <img src="electric/scooty9.jpg" alt="Libero X350">
+                            <div class="product-actions">
+                                <button class="btn"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body pt-2 text-start">
+                            <div class="star-rating mb-2">☆☆☆☆☆</div>
+                            <h5 class="card-title mb-2">Libero X350</h5>
+                            <p class="card-price mb-3">$799.00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card h-100 border-0 product-card" data-product="practico-s2-exclusive" style="cursor: pointer;">
+                        <div class="product-image-wrapper bg-light">
+                            <img src="electric/scooty10.jpg" alt="Practico S2 Exclusive">
+                            <div class="product-actions">
+                                <button class="btn"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body pt-2 text-start">
+                            <div class="star-rating mb-2">☆☆☆☆☆</div>
+                            <h5 class="card-title mb-2">Practico S2 Exclusive</h5>
+                            <p class="card-price mb-3">$600.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 border-0 product-card" data-product="thunder-bolt-x1" style="cursor: pointer;">
+                        <div class="product-image-wrapper bg-light">
+                            <img src="electric/scooty11.jpg" alt="Thunder Bolt X1">
+                            <div class="product-actions">
+                                <button class="btn"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body pt-2 text-start">
+                            <div class="star-rating mb-2">☆☆☆☆☆</div>
+                            <h5 class="card-title mb-2">Thunder Bolt X1</h5>
+                            <p class="card-price mb-3">$850.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 border-0 product-card" data-product="speed-master-pro" style="cursor: pointer;">
+                        <div class="product-image-wrapper bg-light">
+                            <img src="electric/scooty12.jpg" alt="Speed Master Pro">
+                            <div class="product-actions">
+                                <button class="btn"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body pt-2 text-start">
+                            <div class="star-rating mb-2">☆☆☆☆☆</div>
+                            <h5 class="card-title mb-2">Speed Master Pro</h5>
+                            <p class="card-price mb-3">$720.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 border-0 product-card" data-product="elite-rider-z2" style="cursor: pointer;">
+                        <div class="product-image-wrapper bg-light">
+                            <img src="electric/scooty13.jpg" alt="Elite Rider Z2">
+                            <div class="product-actions">
+                                <button class="btn"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body pt-2 text-start">
+                            <div class="star-rating mb-2">☆☆☆☆☆</div>
+                            <h5 class="card-title mb-2">Elite Rider Z2</h5>
+                            <p class="card-price mb-3">$920.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 border-0 product-card" data-product="power-glide-max" style="cursor: pointer;">
+                        <div class="product-image-wrapper bg-light">
+                            <img src="electric/scooty1.jpg" alt="Power Glide Max">
+                            <div class="product-actions">
+                                <button class="btn"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body pt-2 text-start">
+                            <div class="star-rating mb-2">☆☆☆☆☆</div>
+                            <h5 class="card-title mb-2">Power Glide Max</h5>
+                            <p class="card-price mb-3">$780.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 border-0 product-card" data-product="urban-swift-s3" style="cursor: pointer;">
+                        <div class="product-image-wrapper bg-light">
+                            <img src="electric/scooty2.jpg" alt="Urban Swift S3">
+                            <div class="product-actions">
+                                <button class="btn"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body pt-2 text-start">
+                            <div class="star-rating mb-2">☆☆☆☆☆</div>
+                            <h5 class="card-title mb-2">Urban Swift S3</h5>
+                            <p class="card-price mb-3">$650.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 border-0 product-card" data-product="turbo-charge-elite" style="cursor: pointer;">
+                        <div class="product-image-wrapper bg-light">
+                            <img src="electric/scooty3.jpg" alt="Turbo Charge Elite">
+                            <div class="product-actions">
+                                <button class="btn"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body pt-2 text-start">
+                            <div class="star-rating mb-2">☆☆☆☆☆</div>
+                            <h5 class="card-title mb-2">Turbo Charge Elite</h5>
+                            <p class="card-price mb-3">$890.00</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+ 
+
+
+
+
+
+<footer class="site-footer bg-light">
+    <div class="container py-5" style="padding-top: 150px !important;">
+        <div class="row gy-4">
+            <div class="col-lg-3 col-md-6">                <div class="text-muted small mb-1" style="font-size: 1rem; letter-spacing: 2px;">ELECTRIC</div>
+                <div class="fw-bold mb-3" style="font-size: 1.5rem; letter-spacing: 1px;">SCOOTERS</div>
+                <p class="text-muted mb-4" style="font-size: 1.1rem;">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <div class="d-flex gap-2">
+                    <a href="#" class="btn btn-dark btn-sm"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="btn btn-dark btn-sm"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="btn btn-dark btn-sm"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h5 class="fw-bold text-dark mb-3" style="font-size: 1.3rem;">Contact us</h5>
+                <div class="contact-info">
+                    <p class="mb-2" style="font-size: 1.1rem;"><strong>E:</strong> <a href="mailto:info@example.com" class="text-danger text-decoration-none">info@example.com</a></p>
+                    <p class="mb-2" style="font-size: 1.1rem;"><strong>P:</strong> +1 234 567 890</p>
+                    <p class="mb-0" style="font-size: 1.1rem;"><strong>A:</strong> 123 Fifth Avenue, New York,<br>NY 10160</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h5 class="fw-bold text-dark mb-3" style="font-size: 1.3rem;">Useful links</h5>
+                <ul class="list-unstyled footer-links">
+                    <li class="mb-2"><a href="shop.html" class="text-danger text-decoration-none" style="font-size: 1.1rem;">Shop All</a></li>
+                    <li class="mb-2"><a href="electricScooter.html" class="text-danger text-decoration-none" style="font-size: 1.1rem;">Electric Scooters</a></li>
+                    <li class="mb-2"><a href="accessories.html" class="text-danger text-decoration-none" style="font-size: 1.1rem;">Accessories</a></li>
+                    <li class="mb-2"><a href="about.html" class="text-danger text-decoration-none" style="font-size: 1.1rem;">About</a></li>
+                    <li class="mb-2"><a href="contact.html" class="text-danger text-decoration-none" style="font-size: 1.1rem;">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h5 class="fw-bold text-dark mb-3" style="font-size: 1.3rem;">Sign up for special offers</h5>
+                <form class="d-flex flex-column">
+                    <input type="email" class="form-control mb-3" placeholder="Email address" style="border-radius: 0;">
+                    <button class="btn btn-danger text-uppercase fw-bold" style="border-radius: 0 ;width: 110px;height: auto;">SUBSCRIBE</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom border-top py-3" style="margin-top: 300px;">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <div class="copyright-text text-muted mb-3 mb-md-0">
+                <span style="font-size: 1rem;">Copyright © 2025 Electric Scooter | Powered by Electric Scooter</span>
+            </div>
+            <div class="payment-logos">
+                <img src="./photo/imgi_13_payment-icons.png" alt="Payment Methods" style="height: 20px;">
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+    <script src="universal-product-navigation.js"></script>
+
+</body>
+</html>

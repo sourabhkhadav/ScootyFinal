@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Lock - Electric Scooters</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white py-3" style="margin-left: 27px;">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="d-lg-flex w-100 align-items-center">
+        <div class="navbar-nav d-flex flex-lg-row flex-column me-lg-auto gap-3">
+          <a class="nav-link text-dark" href="shop.html">Shop All</a>
+          <a class="nav-link text-dark" href="electricScooter.html">Electric Scooters</a>
+          <a class="nav-link text-dark" href="accessories.html">Accessories</a>
+          <a class="nav-link text-dark" href="about.html">About</a>
+          <a class="nav-link text-dark" href="contact.html">Contact</a>
+        </div>
+        <div class="mx-auto">
+          <a href="index.html">
+            <img src="photo/imgi_1_logo-regular.png" alt="Electric Scooters" style="margin-right: 30px;height: 70px;">
+          </a>
+        </div>
+        <div class="d-flex align-items-center ms-lg-auto gap-3">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search products..." style="min-width: 220px; padding: 8px 12px;">
+            <button class="btn btn-danger" type="submit" style="padding: 8px 12px;">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+          <div class="cart-logo position-relative ms-3" style="cursor: pointer;">
+            <i class="fas fa-shopping-cart fs-5 text-danger"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+          </div>
+          <i class="fas fa-user fs-5 text-dark ms-3" style="margin-right: 40px;"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="container py-5" style="margin-top: 60px;">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="position-relative">
+        <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill bg-white text-secondary border shadow" style="z-index: 2;">Sale!</span>
+        <img id="product-image" src="" alt="" class="w-100" style="height: 600px; object-fit: cover; border-radius: 0;">
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="ps-lg-5">
+        <p class="text-danger text-uppercase mb-2" style="font-size: 14px; font-weight: 600;">Accessories</p>
+        <h1 class="display-5 fw-bold mb-3" id="product-name" style="color: #2c3e50;">Product Name</h1>
+        <div class="d-flex align-items-center mb-3">
+          <span class="text-muted text-decoration-line-through me-2" style="font-size: 18px;">$90.00</span>
+          <span class="h3 text-danger mb-0" id="product-price">$0.00</span>
+          <span class="ms-2 text-muted">& Free Shipping</span>
+        </div>
+        
+        <div class="mb-4">
+          <p class="text-muted" id="product-description" style="line-height: 1.6;">Product description</p>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 mb-4">
+          <!-- <button class="btn btn-outline-secondary" onclick="decreaseQty()">-</button> -->
+          <!-- <input type="number" id="quantity" class="form-control text-center" value="1" min="1" style="width: 60px; border: none; background: #f8f9fa;"> -->
+          <!-- <button class="btn btn-outline-secondary" onclick="increaseQty()">+</button> -->
+          <!-- <button class="btn   add-to-cart btn-danger px-4 py-2 text-uppercase fw-bold" onclick="addToCart()" style="letter-spacing: 1px;">ADD TO CART</button> -->
+        </div>
+
+        <div class="mb-4">
+          <p class="mb-2" style="font-weight: 600;">Guaranteed Safe Checkout</p>
+          <div class="d-flex gap-2">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25' fill='%23003087'%3E%3Cpath d='M0 0h40v25H0z'/%3E%3Ctext x='20' y='15' text-anchor='middle' fill='white' font-size='8'%3EVISA%3C/text%3E%3C/svg%3E" alt="Visa">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25' fill='%23eb001b'%3E%3Cpath d='M0 0h40v25H0z'/%3E%3Ctext x='20' y='15' text-anchor='middle' fill='white' font-size='6'%3EMasterCard%3C/text%3E%3C/svg%3E" alt="MasterCard">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25' fill='%23006fcf'%3E%3Cpath d='M0 0h40v25H0z'/%3E%3Ctext x='20' y='15' text-anchor='middle' fill='white' font-size='6'%3EAmerican Express%3C/text%3E%3C/svg%3E" alt="American Express">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25' fill='%23ff5f00'%3E%3Cpath d='M0 0h40v25H0z'/%3E%3Ctext x='20' y='15' text-anchor='middle' fill='white' font-size='7'%3EDiscover%3C/text%3E%3C/svg%3E" alt="Discover">
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <div class="d-flex align-items-center mb-2"><i class="fas fa-check-circle text-success me-2"></i><span>No-Risk Money Back Guarantee!</span></div>
+          <div class="d-flex align-items-center mb-2"><i class="fas fa-check-circle text-success me-2"></i><span>No Hassle Refunds</span></div>
+          <div class="d-flex align-items-center"><i class="fas fa-check-circle text-success me-2"></i><span>Secure Payments</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <ul class="nav nav-tabs border-0" style="border-bottom: 1px solid #dee2e6 !important;">
+        <li class="nav-item">
+          <button class="nav-link active border-0 text-dark fw-bold" style="border-bottom: 2px solid #dc3545 !important; background: none;">Description</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link border-0 text-muted">Reviews (0)</button>
+        </li>
+      </ul>
+      <div class="py-4">
+        <h3 class="fw-bold mb-4">Description</h3>
+        <h5 class="fw-bold mb-3">Security Lock</h5>
+        <p class="text-muted mb-4" style="line-height: 1.8;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac massa eget urna tempor vehicula vel id nisl. Pellentesque sed felis auctor, molestie lectus vitae, elementum orci. In et nunc consequat, semper tellus eget, euismod quam.</p>
+        <p class="text-muted mb-4" style="line-height: 1.8;">Pellentesque magna arcu, lacinia sed mi non, pretium posuere eros. Mauris maximus imperdiet sem aliquam facilisis. Nam in sem at augue finibus vehicula eget quis sapien. Pellentesque malesuada ligula vel auctor facilisis. In condimentum mattis ornare.</p>
+        
+        <div class="row mt-5">
+          <div class="col-md-6">
+            <h5 class="fw-bold mb-3">Summary of key features</h5>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="fas fa-circle text-success me-2" style="font-size: 8px;"></i>Durable construction for long-lasting security</li>
+              <li class="mb-2"><i class="fas fa-circle text-success me-2" style="font-size: 8px;"></i>Weather-resistant coating for outdoor use</li>
+              <li class="mb-2"><i class="fas fa-circle text-success me-2" style="font-size: 8px;"></i><strong>Security Level:</strong> <span id="security-level-desc">-</span></li>
+              <li class="mb-2"><i class="fas fa-circle text-success me-2" style="font-size: 8px;"></i><strong>Material:</strong> <span id="material-desc">-</span></li>
+              <li class="mb-2"><i class="fas fa-circle text-success me-2" style="font-size: 8px;"></i><strong>Smart-Lock Compatibility:</strong> <span id="smart-compatibility-desc">-</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+<script>
+const products = {
+  'u-lock-force-max': {name: 'U-Lock Force MAX', price: 75.00, image: 'photo/imgi_5_product-15-a-400x525.jpg', description: 'Maximum security with robust U-lock design and hardened steel construction.', securityLevel: 'Maximum', material: 'Hardened Steel', smartCompatibility: 'No'},
+  'unbeatable-lock-100': {name: 'Unbeatable Lock 100', price: 65.00, image: 'photo/imgi_6_product-16-a-400x525.jpg', description: 'Reliable security at an affordable price point, perfect for everyday protection.', securityLevel: 'Standard', material: 'Steel Alloy', smartCompatibility: 'No'},
+  'goodlock-j10': {name: 'GoodLock J10', price: 95.00, image: 'Shop All/imgi_131_product-15-a.jpg', description: 'Premium security lock with advanced features', securityLevel: 'High', material: 'Reinforced Steel', smartCompatibility: 'Yes'},
+  'hammer-scooter-lock': {name: 'Hammer Scooter Lock', price: 75.00, image: 'Shop All/imgi_126_product-14-a.jpg', description: 'Heavy-duty hammer-resistant lock', securityLevel: 'High', material: 'Hardened Steel', smartCompatibility: 'No'},
+  'steelguard-lock': {name: 'SteelGuard Lock', price: 85.00, image: 'Shop All/imgi_136_product-16-a.jpg', description: 'Professional grade steel lock', securityLevel: 'Maximum', material: 'Steel Guard', smartCompatibility: 'No'},
+  'max-secure-lock': {name: 'Max Secure Lock', price: 110.00, image: 'Shop All/imgi_121_product-08-a.jpg', description: 'Maximum security lock system', securityLevel: 'Maximum', material: 'Reinforced Steel', smartCompatibility: 'Yes'},
+  'compact-lock': {name: 'Compact Lock', price: 60.00, image: 'Shop All/imgi_61_product-17-a.jpg', description: 'Compact and lightweight lock', securityLevel: 'Standard', material: 'Steel Alloy', smartCompatibility: 'No'}
+};
+
+function getProductId() {
+  return new URLSearchParams(window.location.search).get('id');
+}
+
+function loadProduct() {
+  const id = getProductId();
+  const product = products[id];
+  if (!product) return window.location.href = 'index.html';
+  
+  document.getElementById('page-title').textContent = `${product.name} - Electric Scooters`;
+  document.getElementById('product-name').textContent = product.name;
+  document.getElementById('product-price').textContent = `$${product.price.toFixed(2)}`;
+  document.getElementById('product-description').textContent = product.description;
+  document.getElementById('security-level-desc').textContent = product.securityLevel;
+  document.getElementById('material-desc').textContent = product.material;
+  document.getElementById('smart-compatibility-desc').textContent = product.smartCompatibility;
+  
+  const img = document.getElementById('product-image');
+  img.src = product.image;
+  img.alt = product.name;
+}
+
+function addToCart() {
+  const id = getProductId();
+  const product = products[id];
+  const quantity = parseInt(document.getElementById('quantity').value) || 1;
+  
+  if (product) {
+    const cartItem = {
+      id: Date.now() + Math.random(),
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      quantity: quantity
+    };
+    
+    if (window.cart) {
+      window.cart.addItem(cartItem);
+      window.cart.showNotification(`Added ${quantity} x ${product.name} to cart!`);
+    } else {
+      setTimeout(() => {
+        if (window.cart) {
+          window.cart.addItem(cartItem);
+          window.cart.showNotification(`Added ${quantity} x ${product.name} to cart!`);
+        }
+      }, 100);
+    }
+  }
+}
+
+function increaseQty() {
+  const qty = document.getElementById('quantity');
+  qty.value = parseInt(qty.value) + 1;
+}
+
+function decreaseQty() {
+  const qty = document.getElementById('quantity');
+  if (parseInt(qty.value) > 1) {
+    qty.value = parseInt(qty.value) - 1;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadProduct);
+</script>
+</body>
+</html>
