@@ -542,23 +542,62 @@ function goToProduct(productId) {
     window.location.href = `product-detail.html?product=${productId}`;
 }
 
+// Quantity controls
+function updateQuantity(change) {
+    const quantityInput = document.getElementById('quantity');
+    let currentValue = parseInt(quantityInput.value) || 1;
+    const newValue = Math.max(1, currentValue + change);
+    quantityInput.value = newValue;
+}
+
 // Add to cart functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Quantity increase/decrease buttons
+    const decreaseBtn = document.querySelector('.quantity-decrease');
+    const increaseBtn = document.querySelector('.quantity-increase');
+    
+    if (decreaseBtn) {
+        decreaseBtn.addEventListener('click', () => updateQuantity(-1));
+    }
+    
+    if (increaseBtn) {
+        increaseBtn.addEventListener('click', () => updateQuantity(1));
+    }
+    
+    // Add to cart button
     const addToCartBtn = document.querySelector('.btn-add-cart');
     if (addToCartBtn) {
-        addToCartBtn.addEventListener('click', function() {
-            const quantity = document.getElementById('quantity').value;
+        addToCartBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
             const productId = getProductId();
             const product = products[productId];
             
-            // Simple alert for demo - in real app, this would add to cart
-            alert(`Added ${quantity} x ${product.name} to cart!`);
-            
-            // Update cart badge (simple demo)
-            const cartBadge = document.querySelector('.badge');
-            if (cartBadge) {
-                const currentCount = parseInt(cartBadge.textContent) || 0;
-                cartBadge.textContent = currentCount + parseInt(quantity);
+            if (product && window.cart) {
+                // Extract price as number
+                const price = parseFloat(product.price.replace('$', ''));
+                
+                // Create product object for cart
+                const cartProduct = {
+                    id: Date.now() + Math.random(),
+                    name: product.name,
+                    price: price,
+                    image: product.image,
+                    quantity: quantity
+                };
+                
+                // Add to cart using global cart system
+                for (let i = 0; i < quantity; i++) {
+                    window.cart.addItem({
+                        ...cartProduct,
+                        quantity: 1,
+                        id: Date.now() + Math.random() + i
+                    });
+                }
+                
+                // Show notification
+                window.cart.showNotification(`${quantity} x ${product.name} added to cart!`);
             }
         });
     }
@@ -569,3 +608,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Make functions globally available
 window.goToProduct = goToProduct;
+window.updateQuantity = updateQuantity;

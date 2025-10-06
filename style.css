@@ -539,10 +539,17 @@ html,body{
 .custom-title {
   font-size: 28px;
   line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .custom-price {
   font-size: 22px;
+}
+
+.product-info {
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 /* Testimonial Section */
@@ -888,7 +895,12 @@ html,body{
     .testimonial-section { padding: 1.5rem 5px !important; }
     .about-us-section { padding: 1.5rem 5px !important; }
     .parallax-container { padding: 1.5rem 5px !important; min-height: 50vh !important; }
-    .image-box { padding: 20px 15px !important; max-width: 95% !important; margin-left: 10px !important; }
+    .image-box { padding: 10px 8px !important; max-width: 85% !important; margin: 0 auto !important; overflow: hidden !important; box-sizing: border-box !important; }
+    .custom-img { max-width: 120px !important; }
+    .custom-title { font-size: 14px !important; line-height: 1.1 !important; word-wrap: break-word !important; }
+    .custom-price { font-size: 12px !important; }
+    .custom-city { font-size: 8px !important; }
+    .product-info { padding: 8px 5px !important; text-align: center !important; }
     .product-info h3 { font-size: 24px !important; }
     .product-info p { font-size: 16px !important; }
     .fixed-final { padding: 1.5rem 5px !important; }
@@ -933,5 +945,147 @@ html,body{
     }
     .checkout-page .form-control {
         margin-bottom: 15px !important;
+    }
+}
+/* Index.html product cards responsive - match electricScooter.html */
+@media (max-width: 767.98px) {
+    .container-fluid.my-5.py-5 .product-card .card {
+        height: auto !important;
+    }
+    .container-fluid.my-5.py-5 .product-card img {
+        max-height: 300px !important;
+        object-fit: contain !important;
+    }
+    .container-fluid.my-5.py-5 .product-card .star-rating {
+        color: #ccc !important;
+        font-size: 1.3rem !important;
+        margin-bottom: 8px !important;
+    }
+    .container-fluid.my-5.py-5 .product-card .card-title {
+        font-size: 1.2rem !important;
+        font-weight: 700 !important;
+        margin-bottom: 8px !important;
+    }
+    .container-fluid.my-5.py-5 .product-card .card-price {
+        font-weight: 400 !important;
+        color: #666 !important;
+    }
+    .container-fluid.my-5.py-5 .product-card .text-start {
+        padding: 1rem 0.5rem !important;
+    }
+}
+/* Smaller font sizes for mobile */
+@media (max-width: 767.98px) {
+    .container-fluid.my-5.py-5 .product-card .star-rating {
+        font-size: 0.9rem !important;
+    }
+    .container-fluid.my-5.py-5 .product-card .card-title {
+        font-size: 0.95rem !important;
+    }
+    .container-fluid.my-5.py-5 .product-card .card-price {
+        font-size: 0.9rem !important;
+    }
+}
+/* Hide strikethrough prices on mobile and adjust text alignment */
+@media (max-width: 767.98px) {
+    .container-fluid.my-5.py-5 .product-card .text-decoration-line-through {
+        display: none !important;
+
+    }
+    .container-fluid.my-5.py-5 .product-card .text-start {
+        text-align: left !important;
+        padding-left: 70px !important;
+    }
+    .container-fluid.my-5.py-5 .product-card .star-rating {
+        text-align: left !important;
+    }
+    .container-fluid.my-5.py-5 .product-card .card-title {
+        text-align: left !important;
+    }
+}
+/* Show product actions on mobile */
+@media (max-width: 767.98px) {
+    .container-fluid.my-5.py-5 .product-actions {
+        opacity: 1 !important;
+    }
+}
+/* Show product actions on mobile for all pages */
+@media (max-width: 767.98px) {
+    .product-actions {
+        opacity: 1 !important;
+    }
+}
+/* Universal product card styling for all pages on mobile */
+@media (max-width: 767.98px) {
+    .product-card .card {
+        height: auto !important;
+    }
+    .product-card img, .product-image-wrapper img {
+        max-height: 300px !important;
+        object-fit: contain !important;
+    }
+    .product-card .star-rating {
+        color: #ccc !important;
+        font-size: 0.9rem !important;
+        margin-bottom: 6px !important;
+    }
+    .product-card .card-title {
+        font-size: 0.95rem !important;
+        font-weight: 700 !important;
+        margin-bottom: 6px !important;
+    }
+    .product-card .card-price {
+        font-weight: 400 !important;
+        color: #666 !important;
+        font-size: 0.9rem !important;
+    }
+    .product-card .card-body {
+        padding: 1rem 0.5rem !important;
+    }
+}
+/* Universal navbar responsive styling for all pages */
+@media (max-width: 1199.98px) {
+    .navbar {
+        margin-left: 0 !important;
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .navbar {
+        margin-left: 0 !important;
+        padding: 0.5rem 1rem;
+    }
+    .navbar-brand img {
+        height: 45px !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .navbar {
+        margin-left: 0 !important;
+        padding: 0.5rem 0.75rem;
+    }
+    .navbar-brand img {
+        height: 40px !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .navbar {
+        margin-left: 0 !important;
+        padding: 0.5rem;
+    }
+    .navbar-brand img {
+        height: 35px !important;
+    }
+}
+/* Remove extra footer spacing on mobile */
+@media (max-width: 767.98px) {
+    .footer-bottom {
+        margin-top: 50px !important;
+    }
+    .site-footer .container {
+        padding-top: 50px !important;
     }
 }

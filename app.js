@@ -135,6 +135,23 @@ class ShoppingCart {
         this.updateCartDisplay();
     }
 
+    addModalProduct(name, price, image) {
+        const product = {
+            id: Date.now() + Math.random(),
+            name: name,
+            price: price,
+            image: image,
+            quantity: 1
+        };
+        
+        this.addItem(product);
+        this.showNotification(`${product.name} added to cart!`);
+        
+        // Close the modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('productModal'));
+        if (modal) modal.hide();
+    }
+
     removeItem(productId) {
         this.items = this.items.filter(item => item.id !== productId);
         this.saveCart();
@@ -170,6 +187,11 @@ class ShoppingCart {
         const productCard = e.target.closest('.product-card') || e.target.closest('.card') || e.target.closest('.col');
         const product = this.extractProductData(productCard);
         
+        if (!product) {
+            this.showNotification('Unable to load product information!');
+            return;
+        }
+        
         const modalHTML = `
             <div class="modal fade" id="productModal" tabindex="-1">
                 <div class="modal-dialog modal-lg">
@@ -188,7 +210,7 @@ class ShoppingCart {
                                     <h4 class="text-danger mb-3">$${product.price.toFixed(2)}</h4>
                                     <p class="text-muted">High-quality electric scooter with excellent performance and durability. Perfect for urban commuting and recreational rides.</p>
                                     <div class="d-flex gap-2 mt-4">
-                                        <button class="btn btn-danger add-to-cart">Add to Cart</button>
+                                        <button class="btn btn-danger" onclick="cart.addModalProduct('${product.name}', ${product.price}, '${product.image}')">Add to Cart</button>
                                         <button class="btn btn-outline-secondary">Add to Wishlist</button>
                                     </div>
                                 </div>

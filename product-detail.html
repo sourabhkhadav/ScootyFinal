@@ -178,11 +178,12 @@
 
                     <!-- Quantity and Add to Cart -->
                     <div class="d-flex align-items-center gap-3 mb-4">
-                        <div class="d-flex align-items-center">
-                            <label for="quantity" class="me-2">Qty:</label>
-                            <input type="number" id="quantity" class="form-control quantity-input" value="1" min="1">
+                        <div class="d-flex align-items-center border rounded">
+                            <button type="button" class="btn btn-sm btn-outline-secondary quantity-decrease" style="border-radius: 0; border-right: 1px solid #dee2e6;">-</button>
+                            <input type="number" id="quantity" class="form-control quantity-input text-center" value="1" min="1" style="border: none; box-shadow: none; width: 60px;" readonly>
+                            <button type="button" class="btn btn-sm btn-outline-secondary quantity-increase" style="border-radius: 0; border-left: 1px solid #dee2e6;">+</button>
                         </div>
-                        <button class="btn btn-add-cart">
+                        <button class="btn btn-add-cart add-to-cart">
                             <i class="fas fa-shopping-cart me-2"></i>Add to Cart
                         </button>
                     </div>
@@ -389,6 +390,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
     <script src="product-detail.js"></script>
 </body>
 </html>
